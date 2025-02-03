@@ -11,15 +11,19 @@ def header():
 def question_return(question):
     return (int)(input(question))
 
-def highest_digits(digits):
-    print("hello")
-
-def start_multiplication(lowest_a_number,highest_a_number,lowest_b_number,highest_b_number):
+def start_multiplication(lowest_a_number,highest_a_number,lowest_b_number,highest_b_number,nExercises):
     print("\nStarting multiplication exercises\n")
+    i = 0;
+    
     while True:
         random_number_a = random.randint(lowest_a_number,highest_a_number)
         random_number_b = random.randint(lowest_b_number,highest_b_number)
-
+        i+=1
+        print(nExercises)
+        if(i > nExercises):
+            break;
+        else:
+            print(f"${i} and ${nExercises}")
         while True : 
             response = int(input(f"{random_number_a} * {random_number_b}: "))
         
@@ -29,6 +33,9 @@ def start_multiplication(lowest_a_number,highest_a_number,lowest_b_number,highes
             else:
                 print(f"{RED}Wrong response, please try again\n{RESET}")
             
+
+def exercisesNumber():
+    return (int)(input("\nNumbers of exercises:"))
 
 def multiplication_setup():
     two_digits = False
@@ -40,7 +47,9 @@ def multiplication_setup():
     lowest_b_number = (int)(input("lowest number for B:"))
     highest_b_number = (int)(input("highest number for B:"))
 
-    start_multiplication(lowest_a_number,highest_a_number,lowest_b_number,highest_b_number)
+    nExercises = exercisesNumber()
+
+    start_multiplication(lowest_a_number,highest_a_number,lowest_b_number,highest_b_number,nExercises)
 
 def select_math_practice(value):
     print("\n")
