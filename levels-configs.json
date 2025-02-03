@@ -1,0 +1,27 @@
+{
+    "Multiplication":{
+        "Exam":{
+            "A1":{
+                "min_a":2,
+                "max_a":10,
+                "min_b":2,
+                "max_b":10,
+                "nExercises":10
+            },
+            "A2":{
+                "min_a":2,
+                "max_a":10,
+                "min_b":10,
+                "max_b":20,
+                "nExercises":10
+            },
+            "A3":{
+                "min_a":2,
+                "max_a":10,
+                "min_b":20,
+                "max_b":30,
+                "nExercises":10
+            }
+        }
+    }
+}
