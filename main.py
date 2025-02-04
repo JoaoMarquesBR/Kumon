@@ -1,5 +1,6 @@
 import random 
 import readJson
+import time
 
 RESET = "\033[0m"
 RED = "\033[31m"
@@ -14,14 +15,16 @@ def question_return(question):
     return (int)(input(question))
 
 def start_multiplication(lowest_a_number,highest_a_number,lowest_b_number,highest_b_number,nExercises):
-    print("\nStarting multiplication exercises\n")
     i = 0;
+    startTime = time.time()
     
     while True:
         random_number_a = random.randint(lowest_a_number,highest_a_number)
         random_number_b = random.randint(lowest_b_number,highest_b_number)
         i+=1
         if(i > nExercises):
+            endTime = time.time()
+            print(f"Duration = {(endTime-startTime)}")
             break;
         while True : 
             response = int(input(f"#{i}: {random_number_a} * {random_number_b}: "))
@@ -54,12 +57,23 @@ def multiplication_exam_setup(lowest_a_number,highest_a_number,lowest_b_number,h
     start_multiplication(lowest_a_number,highest_a_number,lowest_b_number,highest_b_number,nExercises)
 
 
+def chooseStringFromList(list):
+    i =0;
+    for obj in list:
+        i+=1
+        print(f"{i} - {obj}")
+    chosen_option = (int)(input("Chose ID: "))-1
+    return list[chosen_option]
+
 def select_math_practice(value):
     print("\n")
     if value == 1:
         multiplication_setup()
     if value==2 :
-        ec = readJson.readExamLevel("A1")
+        multiplication_exam_options = readJson.readMultiplicationExamOptions()
+        chosen_exam_level = chooseStringFromList(multiplication_exam_options)
+        ec = readJson.readExamLevel(chosen_exam_level)
+        print(f"\nStarting Multiplication Exam Level {chosen_exam_level}")
         multiplication_exam_setup(ec['min_a'],ec['max_a'],ec['min_b'],ec['max_b'],ec['nExercises'])
 
 def menu_selection():

@@ -5,9 +5,9 @@ with open('levels-configs.json','r') as file:
     data = json.load(file)
 
 
-def readMultiplicationOptions() :
-    for i in data['Multiplication']['Exam']:
-        print(i)
+def readMultiplicationExamOptions() :
+    return  list(data['Multiplication']['Exam'])
+        
 
 def readExamLevel(examLevel):
     return (data['Multiplication']['Exam'][examLevel])
